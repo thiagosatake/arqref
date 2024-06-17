@@ -1,0 +1,14 @@
+plugins {
+	id "base"
+}
+
+description = "Architecture Reference One"
+
+allprojects {
+	group "arqref.one"
+
+	repositories {
+		mavenCentral()		
+	}
+
+}
