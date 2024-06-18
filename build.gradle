@@ -1,14 +1,46 @@
 plugins {
-	id "base"
+    id 'base'
+    id 'org.springframework.boot' version '3.3.0'
 }
 
-description = "Architecture Reference One"
+description = 'Architecture Reference'
 
-allprojects {
-	group "arqref.one"
+ext {
+	moduleProjects = subprojects.findAll{it.name.startsWith("arqref-one-")}
+	javaProjects = subprojects - project(":arqref-bom")	
+}
 
+configure(allprojects){ project ->
+
+	group = "arqref.one"
+	
+	apply plugin: 'io.spring.dependency-management'
+	
 	repositories {
-		mavenCentral()		
+		mavenCentral()
+	}
+	
+	dependencyManagement {
+		imports {mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES}
+		
+		dependencies {
+
+		}		
+	}
+}
+
+configure(moduleProjects){ project ->
+	apply plugin: 'java-library'
+}
+
+configure(javaProjects) { project ->
+	apply plugin: 'java'
+	
+	java {
+		sourceCompatibility = JavaVersion.VERSION_21
+		targetCompatibility = JavaVersion.VERSION_21 	
 	}
 
+	compileJava.options.encoding = 'UTF-8'
+	compileTestJava.options.encoding = 'UTF-8'
 }
