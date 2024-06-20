@@ -1,40 +1,55 @@
 plugins {
     id 'base'
-    id 'org.springframework.boot' version '3.3.0'
+    id "io.spring.dependency-management" version "1.1.5"
 }
 
 description = 'Architecture Reference'
 
 ext {
 	moduleProjects = subprojects.findAll{it.name.startsWith("arqref-one-")}
-	javaProjects = subprojects - project(":arqref-bom")	
+	javaProjects = subprojects.findAll { !it.name.startsWith("arqref-bom") }
 }
 
 configure(allprojects){ project ->
 
-	group = "arqref.one"
-	
-	apply plugin: 'io.spring.dependency-management'
-	
-	repositories {
-		mavenCentral()
-	}
-	
-	dependencyManagement {
-		imports {mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES}
-		
-		dependencies {
+	apply plugin: "maven-publish"
 
-		}		
-	}
+	group = "arqref.one"
+	version = "1.0.0-SNAPSHOT"
+		
+	repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    
 }
 
-configure(moduleProjects){ project ->
-	apply plugin: 'java-library'
+configure(moduleProjects){ project ->	
+	apply plugin: "java-library"
+	
+	publishing {
+	    publications {
+	        maven(MavenPublication) {
+	         	from components.java
+	         	
+	            versionMapping {
+	                usage('java-api') {
+	                    fromResolutionOf('runtimeClasspath')
+	                }
+	                usage('java-runtime') {
+	                    fromResolutionResult()
+	                }
+	            }
+	        }
+	    }
+	}
+	
 }
 
 configure(javaProjects) { project ->
+	
 	apply plugin: 'java'
+	apply plugin: "io.spring.dependency-management"
 	
 	java {
 		sourceCompatibility = JavaVersion.VERSION_21
@@ -43,4 +58,19 @@ configure(javaProjects) { project ->
 
 	compileJava.options.encoding = 'UTF-8'
 	compileTestJava.options.encoding = 'UTF-8'
+	
+	dependencyManagement {
+	     imports {
+	          mavenBom 'org.springframework.boot:spring-boot-dependencies:3.1.1'
+	     }
+	}
+
 }
+
+
+
+
+
+
+
+
