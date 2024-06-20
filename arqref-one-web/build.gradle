@@ -1,4 +1,4 @@
-description = "ArqRef Web"
+description = "Architecture Reference (Web)"
 
 dependencies {
 	 api 'org.springframework.boot:spring-boot'

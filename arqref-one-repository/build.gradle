@@ -1,5 +1,4 @@
-description = ""
+description = "Architecture Reference (Respository)"
 
-dependencies {
-     api 'org.springframework.integration:spring-integration-core'
+dependencies {    
 }
