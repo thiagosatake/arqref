@@ -1,5 +1,6 @@
 rootProject.name = 'arqref'
 
+include 'arqref-one-test'
 include 'arqref-one-security'
 include 'arqref-one-repository'
 include 'arqref-one-service'

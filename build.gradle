@@ -27,11 +27,15 @@ configure(allprojects){ project ->
 configure(moduleProjects){ project ->	
 	apply plugin: "java-library"
 	
+	java {
+    	withJavadocJar()
+    	withSourcesJar()
+	}
+	
 	publishing {
 	    publications {
 	        maven(MavenPublication) {
-	         	from components.java
-	         	
+	         	from components.java	
 	            versionMapping {
 	                usage('java-api') {
 	                    fromResolutionOf('runtimeClasspath')
@@ -45,6 +49,7 @@ configure(moduleProjects){ project ->
 	}
 	
 }
+
 
 configure(javaProjects) { project ->
 	
@@ -61,9 +66,14 @@ configure(javaProjects) { project ->
 	
 	dependencyManagement {
 	     imports {
-	          mavenBom 'org.springframework.boot:spring-boot-dependencies:3.1.1'
+	          mavenBom 'org.springframework.boot:spring-boot-dependencies:3.3.1'
 	     }
 	}
+	
+	dependencies{
+	 	compileOnly 'org.projectlombok:lombok'
+  		annotationProcessor 'org.projectlombok:lombok'
+  	}
 
 }
 
