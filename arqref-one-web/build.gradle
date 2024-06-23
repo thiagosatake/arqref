@@ -1,7 +1,7 @@
 description = "Architecture Reference (Web)"
 
 dependencies {
-	api(project(":arqref-one-security"))
+	api project(":arqref-one-security")
 	api 'org.springframework.boot:spring-boot-starter-web'
 	api 'org.springframework.boot:spring-boot-starter-actuator'
 	

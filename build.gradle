@@ -66,13 +66,19 @@ configure(javaProjects) { project ->
 	
 	dependencyManagement {
 	     imports {
-	          mavenBom 'org.springframework.boot:spring-boot-dependencies:3.3.1'
+	         mavenBom 'org.springframework.boot:spring-boot-dependencies:3.3.1'
+	     }	     
+	     
+	     dependencies{
+	        dependency 'org.keycloak:keycloak-policy-enforcer:25.0.1'
+          	dependency 'org.keycloak:keycloak-core:25.0.1'
 	     }
+	     
 	}
 	
 	dependencies{
 	 	compileOnly 'org.projectlombok:lombok'
-  		annotationProcessor 'org.projectlombok:lombok'
+  		annotationProcessor 'org.projectlombok:lombok'  		
   	}
 
 }

@@ -1,7 +1,6 @@
 description = "Architecture Reference (Tests)"
 
-dependencies {   
-
-	api('org.springframework.boot:spring-boot-starter-test')
+dependencies {
+	api 'org.springframework.boot:spring-boot-starter-test'
 
 }
