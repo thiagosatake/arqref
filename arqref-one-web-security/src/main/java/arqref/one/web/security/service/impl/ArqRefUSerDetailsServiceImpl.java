@@ -1,9 +1,9 @@
-package arqref.one.security.service.impl;
+package arqref.one.web.security.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import arqref.one.security.domain.ArqRefUserDetails;
-import arqref.one.security.service.ArqRefUserDetailsService;
+import arqref.one.web.security.domain.ArqRefUserDetails;
+import arqref.one.web.security.service.ArqRefUserDetailsService;
 
 @Service
 public class ArqRefUSerDetailsServiceImpl implements ArqRefUserDetailsService {

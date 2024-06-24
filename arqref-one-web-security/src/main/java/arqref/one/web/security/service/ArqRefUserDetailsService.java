@@ -1,6 +1,6 @@
-package arqref.one.security.service;
+package arqref.one.web.security.service;
 
-import arqref.one.security.domain.ArqRefUserDetails;
+import arqref.one.web.security.domain.ArqRefUserDetails;
 
 public interface ArqRefUserDetailsService {
     

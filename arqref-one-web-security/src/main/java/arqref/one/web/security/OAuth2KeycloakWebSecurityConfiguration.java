@@ -1,4 +1,4 @@
-package arqref.one.web;
+package arqref.one.web.security;
 
 import org.keycloak.adapters.authorization.integration.jakarta.ServletPolicyEnforcerFilter;
 import org.keycloak.representations.adapters.config.PolicyEnforcerConfig;

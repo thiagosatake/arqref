@@ -1,4 +1,4 @@
-package arqref.one.security.domain;
+package arqref.one.web.security.domain;
 
 import lombok.Data;
 

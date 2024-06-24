@@ -1,4 +1,4 @@
-package arqref.one.security.exception;
+package arqref.one.web.security.exception;
 
 import java.io.IOException;
 
